@@ -34,13 +34,21 @@
 
 ## 📍 Current Progress
 
-**Status**: Phase 1 Complete ✅ | Working on Phase 2 🔍
+**Status**: Phase 2 Complete ✅ | Ready for Phase 3 🔄
 
 - ✅ **Phase 1: Environment Setup** - COMPLETE
-  - Imported all ML/DL libraries
+  - Imported all ML/DL libraries (pandas, numpy, matplotlib, seaborn, PyTorch)
   - Loaded dataset (1,460 training samples, 1,459 test samples)
   - Analyzed data structure: 38 numerical + 43 categorical features
-- 🔄 **Phase 2: Exploratory Data Analysis** - IN PROGRESS
+  
+- ✅ **Phase 2: Exploratory Data Analysis** - COMPLETE
+  - Analyzed target variable (SalePrice): heavily right-skewed (1.88)
+  - Identified missing values: PoolQC (99%), Alley (94%), Fence (81%)
+  - Found strongest predictors: OverallQual (0.79), GrLivArea (0.71), GarageCars (0.64)
+  - Discovered multicollinearity: GarageArea/GarageCars (0.88)
+  - Created 8 comprehensive visualizations
+  
+- 🔄 **Phase 3: Data Preprocessing** - NEXT UP
 
 ---
 
@@ -59,7 +67,9 @@
 - Design output layers for continuous predictions
 
 ### 🏆 Key Achievements
-- [ ] Complete exploratory data analysis with visualizations
+- [x] Complete exploratory data analysis with visualizations
+- [x] Identify strongest predictors (OverallQual, GrLivArea, GarageCars)
+- [x] Discover data quality issues (missing values, skewness, multicollinearity)
 - [ ] Implement robust missing data handling strategy
 - [ ] Engineer features from 79 raw variables
 - [ ] Build PyTorch regression network
@@ -125,16 +135,21 @@ unzip house-prices-advanced-regression-techniques.zip -d data/
 
 </details>
 
-### Phase 2: Exploratory Data Analysis (EDA) 🔍
+### Phase 2: Exploratory Data Analysis (EDA) ✅
 <details>
 <summary><strong>Details</strong></summary>
 
-- [ ] Examine dataset shape and structure
-- [ ] Identify numerical vs categorical features
-- [ ] Analyze missing values (many features have NaN!)
-- [ ] Visualize target variable (SalePrice) distribution
-- [ ] Correlation analysis with target
-- [ ] Identify top features correlated with SalePrice
+- [x] Examine dataset shape and structure
+- [x] Identify numerical vs categorical features (38 numerical, 43 categorical)
+- [x] Analyze missing values (PoolQC 99%, Alley 94%, Fence 81%)
+- [x] Visualize target variable (SalePrice) distribution (skewness = 1.88)
+- [x] Correlation analysis with target (OverallQual: 0.79, GrLivArea: 0.71)
+- [x] Identify top features correlated with SalePrice
+- [x] Discover multicollinearity (GarageArea/GarageCars: 0.88)
+- [x] Analyze categorical features (Neighborhood, OverallQual, HouseStyle)
+- [x] Create 8 comprehensive visualizations
+
+**Status: ✅ COMPLETE** | See [EDA Results](#-exploratory-data-analysis-results) section for detailed findings
 
 </details>
 
@@ -205,8 +220,88 @@ unzip house-prices-advanced-regression-techniques.zip -d data/
 
 ---
 
-## 🏆 Results
-Coming soon after model training!
+## 📊 Exploratory Data Analysis Results
+
+### Key Findings from Phase 2:
+
+#### 🎯 Target Variable Analysis
+- **Distribution**: Heavily right-skewed (skewness = 1.88)
+- **Price Range**: $34,900 - $755,000
+- **Median Price**: $163,000
+- **Mean Price**: $180,921
+- **Action Required**: Log transformation needed for neural network training
+
+<div align="center">
+<img src="images/skewed_right_distribution.png" alt="SalePrice Distribution - Right Skewed" width="680" />
+<p><em>Original SalePrice distribution showing right skewness</em></p>
+</div>
+
+<div align="center">
+<img src="images/Log-Transformed_Target.png" alt="Log-Transformed SalePrice Distribution" width="680" />
+<p><em>Log-transformed distribution (nearly normal with skewness ≈ 0.12)</em></p>
+</div>
+
+#### 🔍 Missing Values Analysis
+- **PoolQC**: 99.5% missing (very few houses have pools)
+- **Alley**: 93.8% missing (most houses don't have alley access)
+- **Fence**: 80.8% missing (most houses don't have fences)
+- **FireplaceQu**: 47.3% missing
+- **LotFrontage**: 17.7% missing
+
+<div align="center">
+<img src="images/Missing_Value_Percentage_by_Column.png" alt="Missing Values by Column" width="680" />
+<p><em>Top features with missing values - strategic imputation needed</em></p>
+</div>
+
+#### 🏆 Strongest Predictors of Sale Price
+
+| Feature | Correlation | Meaning |
+|---------|-------------|---------|
+| OverallQual | 0.79 | Overall material and finish quality |
+| GrLivArea | 0.71 | Above grade living area (sq ft) |
+| GarageCars | 0.64 | Size of garage in car capacity |
+| GarageArea | 0.62 | Size of garage in square feet |
+| TotalBsmtSF | 0.61 | Total square feet of basement area |
+| 1stFlrSF | 0.61 | First floor square feet |
+| FullBath | 0.56 | Full bathrooms above grade |
+| TotRmsAbvGrd | 0.53 | Total rooms above grade |
+
+<div align="center">
+<img src="images/correlation_heatmap.png" alt="Correlation Heatmap" width="680" />
+<p><em>Correlation heatmap showing relationships between top 10 features</em></p>
+</div>
+
+<div align="center">
+<img src="images/plots for the top 3 most correlated features.png" alt="Top 3 Correlated Features" width="680" />
+<p><em>Scatter plots: OverallQual, GrLivArea, and GarageCars vs SalePrice</em></p>
+</div>
+
+#### ⚠️ Multicollinearity Detected
+- **GarageArea ↔ GarageCars**: 0.88 correlation → Drop one feature
+- **GrLivArea ↔ TotRmsAbvGrd**: 0.83 correlation → Consider dropping one
+- **TotalBsmtSF ↔ 1stFlrSF**: 0.82 correlation → May keep both
+
+#### 🏘️ Categorical Features Impact
+
+<div align="center">
+<img src="images/SalePrice Distribution by Neighborhood.png" alt="Price by Neighborhood" width="680" />
+<p><em>Significant price variation across neighborhoods (NridgHt and NoRidge are premium)</em></p>
+</div>
+
+<div align="center">
+<img src="images/SalePrice Distribution by Overall Quality.png" alt="Price by Quality" width="680" />
+<p><em>Clear linear relationship: Higher quality = Higher price</em></p>
+</div>
+
+<div align="center">
+<img src="images/SalePrice Distribution by House Style.png" alt="Price by House Style" width="680" />
+<p><em>2Story and 2.5Fin houses command premium prices</em></p>
+</div>
+
+---
+
+## 🏆 Model Results
+Coming soon after model training (Phase 6)!
 
 ### Expected Performance Benchmarks:
 | Model | RMSE (Log) | Notes |
