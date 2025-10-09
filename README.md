@@ -1,0 +1,301 @@
+# 🏠 House Prices - Advanced Regression Techniques
+
+<div align="center">
+
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
+![Framework](https://img.shields.io/badge/Framework-PyTorch-red.svg)
+![Status](https://img.shields.io/badge/Status-Active-green.svg)
+
+**Predicting house sale prices using neural networks and advanced feature engineering**
+
+[🎯 Overview](#-project-overview) • [📊 Results](#-results) • [🚀 Quick-Start](#-quick-start) • [📦 Submission](#-kaggle-submission)
+
+</div>
+
+> Learning regression with neural networks — moving from classification to continuous predictions. Building on the Digit Recognizer project, now tackling feature engineering, missing data, and mixed data types.
+
+---
+
+## 👨‍💻 Author
+<div align="center">
+
+**Francisco Teixeira Barbosa**
+
+[![GitHub](https://img.shields.io/badge/GitHub-Tuminha-black?style=flat&logo=github)](https://github.com/Tuminha)
+[![Kaggle](https://img.shields.io/badge/Kaggle-Profile-20BEFF?style=flat&logo=kaggle&logoColor=white)](https://www.kaggle.com/franciscotbarbosa)
+[![Email](https://img.shields.io/badge/Email-cisco%40periospot.com-blue?style=flat&logo=gmail)](mailto:cisco@periospot.com)
+[![Twitter](https://img.shields.io/badge/Twitter-cisco__research-1DA1F2?style=flat&logo=twitter)](https://twitter.com/cisco_research)
+
+*Learning Machine Learning through CodeCademy • Building AI solutions step by step*
+
+</div>
+
+---
+
+## 🎯 Project Overview
+- **What**: Predict house sale prices based on 79 explanatory features describing residential homes in Ames, Iowa
+- **Why**: Learn regression with neural networks, master feature engineering, and handle real-world messy data with missing values
+- **Expected Outcome**: Build a regression model achieving ~0.12-0.13 RMSE (log scale) and understand the difference between classification and regression
+
+### 🎓 Learning Objectives
+- Master regression with neural networks (vs classification)
+- Handle missing data with proper imputation strategies
+- Work with mixed data types (numerical + categorical)
+- Implement feature engineering and selection
+- Practice feature scaling and normalization
+- Compare NN vs traditional ML (Linear Regression, Random Forest, XGBoost)
+- Design output layers for continuous predictions
+
+### 🏆 Key Achievements
+- [ ] Complete exploratory data analysis with visualizations
+- [ ] Implement robust missing data handling strategy
+- [ ] Engineer features from 79 raw variables
+- [ ] Build PyTorch regression network
+- [ ] Achieve <0.13 RMSE on validation set
+- [ ] Generate Kaggle submission
+- [ ] Compare neural network vs traditional ML approaches
+
+---
+
+## 📊 Dataset / Domain
+- **Source**: [Kaggle - House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
+- **Training Size**: 1,460 samples
+- **Test Size**: 1,459 samples
+- **Features**: 79 (mix of numerical and categorical)
+- **Target**: `SalePrice` - the property's sale price in dollars (continuous value)
+- **Evaluation Metric**: RMSE between the logarithm of predicted and observed sale prices
+
+---
+
+## 🚀 Quick Start
+### Prerequisites
+```bash
+pip install -r requirements.txt
+```
+
+### Setup
+```bash
+git clone https://github.com/Tuminha/house-prices-prediction
+cd house-prices-prediction
+
+# Download data from Kaggle (see instructions below)
+# Then run the notebook:
+jupyter notebook notebooks/house_prices.ipynb
+```
+
+### 📥 Downloading the Dataset
+1. Go to the [Kaggle competition page](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
+2. Download `train.csv`, `test.csv`, and `sample_submission.csv`
+3. Place them in the `data/` directory
+
+**Or use Kaggle CLI:**
+```bash
+# First time setup (if not already done):
+pip install kaggle
+# Place your kaggle.json in ~/.kaggle/
+
+# Download dataset:
+kaggle competitions download -c house-prices-advanced-regression-techniques
+unzip house-prices-advanced-regression-techniques.zip -d data/
+```
+
+---
+
+## 📈 Project Phases
+### Phase 1: Environment Setup ✅
+<details>
+<summary><strong>Details</strong></summary>
+
+- [x] Import libraries (pandas, numpy, matplotlib, seaborn, torch, sklearn)
+- [x] Check PyTorch version and device availability
+- [x] Load training data from `data/` directory
+- [x] Verify data loading and display basic information
+
+</details>
+
+### Phase 2: Exploratory Data Analysis (EDA) 🔍
+<details>
+<summary><strong>Details</strong></summary>
+
+- [ ] Examine dataset shape and structure
+- [ ] Identify numerical vs categorical features
+- [ ] Analyze missing values (many features have NaN!)
+- [ ] Visualize target variable (SalePrice) distribution
+- [ ] Correlation analysis with target
+- [ ] Identify top features correlated with SalePrice
+
+</details>
+
+### Phase 3: Data Preprocessing 🔄
+<details>
+<summary><strong>Details</strong></summary>
+
+- [ ] Handle missing values with appropriate strategies
+- [ ] Separate numerical and categorical features
+- [ ] One-hot encode categorical variables
+- [ ] Handle outliers in key features
+- [ ] Feature engineering (create new meaningful features)
+
+</details>
+
+### Phase 4: Feature Scaling & Selection ⚖️
+<details>
+<summary><strong>Details</strong></summary>
+
+- [ ] Normalize/standardize numerical features
+- [ ] Remove low-variance or highly correlated features
+- [ ] Train/validation split (80/20)
+- [ ] Convert to PyTorch tensors (float32)
+
+</details>
+
+### Phase 5: Neural Network for Regression 🏗️
+<details>
+<summary><strong>Details</strong></summary>
+
+- [ ] Design regression network architecture
+- [ ] Implement dropout for regularization
+- [ ] Use MSELoss for regression
+- [ ] Initialize model and optimizer
+
+**Architecture Plan:**
+- Input: N features (after preprocessing)
+- Hidden 1: 256 neurons + ReLU + Dropout(0.2)
+- Hidden 2: 128 neurons + ReLU + Dropout(0.2)
+- Hidden 3: 64 neurons + ReLU
+- Output: 1 neuron (continuous prediction)
+
+</details>
+
+### Phase 6: Training Pipeline 🚂
+<details>
+<summary><strong>Details</strong></summary>
+
+- [ ] Create DataLoaders for batching
+- [ ] Implement training loop with validation
+- [ ] Track MSE, MAE, RMSE, R² metrics
+- [ ] Plot training curves
+- [ ] Save best model based on validation RMSE
+
+</details>
+
+### Phase 7: Evaluation & Submission 📊
+<details>
+<summary><strong>Details</strong></summary>
+
+- [ ] Evaluate model on validation set
+- [ ] Generate predictions for test.csv
+- [ ] Create submission.csv (Id, SalePrice)
+- [ ] Submit to Kaggle
+- [ ] Document model and results
+
+</details>
+
+---
+
+## 🏆 Results
+Coming soon after model training!
+
+### Expected Performance Benchmarks:
+| Model | RMSE (Log) | Notes |
+|-------|-----------|-------|
+| Baseline (Mean) | ~0.40 | Just predict mean price |
+| Linear Regression | ~0.14-0.16 | Simple baseline |
+| Random Forest | ~0.13-0.14 | Traditional ML |
+| Neural Network | ~0.12-0.13 | **Our target!** |
+| XGBoost (tuned) | ~0.11-0.12 | Top models |
+
+### 📌 Business Interpretation
+*Coming soon - will interpret feature importance and key price drivers*
+
+### 🖼 Visuals
+*Visualizations will be added as the project progresses*
+
+---
+
+## 🛠 Technical Stack
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| Data Processing | Pandas, NumPy | ETL & feature engineering |
+| Visualization | Matplotlib, Seaborn | EDA & plots |
+| ML Framework | PyTorch | Neural network regression |
+| Traditional ML | Scikit-learn | Baselines & metrics |
+| Development | Jupyter Notebook | Interactive learning |
+| Version Control | Git/GitHub | Collaboration |
+
+---
+
+## 🤖 Trained Model
+*Coming soon - will include model card, architecture details, and download link*
+
+**Model Architecture:**
+- Type: Feed-forward Neural Network for Regression
+- Input Features: TBD (after feature engineering)
+- Hidden Layers: 3 layers (256 → 128 → 64 neurons)
+- Output: Single continuous value (predicted price)
+- Regularization: Dropout (0.2)
+
+---
+
+## 📦 Kaggle Submission
+The notebook includes Phase 7 to produce `submission.csv` for Kaggle.
+
+### Generate Submission
+```python
+# Apply same preprocessing pipeline to test data
+# Generate predictions
+# Create submission file
+submission = pd.DataFrame({
+    'Id': test_ids,
+    'SalePrice': predictions
+})
+submission.to_csv('submission.csv', index=False)
+```
+
+### Validate Submission
+```python
+import pandas as pd
+s = pd.read_csv('submission.csv')
+assert list(s.columns) == ['Id', 'SalePrice']
+assert s.shape[0] == 1459
+assert s['SalePrice'].notna().all()
+print('✅ Submission looks valid:', s.shape)
+```
+
+### Upload to Kaggle
+- **UI**: Kaggle → House Prices competition → Submit Predictions → upload `submission.csv`
+- **CLI**: `kaggle competitions submit -c house-prices-advanced-regression-techniques -f submission.csv -m "Neural Network with feature engineering"`
+
+---
+
+## 📝 Learning Journey
+**Key Skills Developed:**
+- Regression vs Classification in Neural Networks
+- Feature Engineering for Real Estate Data
+- Missing Data Imputation Strategies
+- Mixed Data Type Handling (Numerical + Categorical)
+- Model Evaluation Metrics (RMSE, MAE, R²)
+- PyTorch for Regression Tasks
+
+---
+
+## 🚀 Next Steps
+- [ ] Implement ensemble methods (combine NN + XGBoost)
+- [ ] Experiment with different architectures
+- [ ] Add feature importance analysis
+- [ ] Try advanced regularization techniques
+- [ ] Compare with Gradient Boosting models
+- [ ] Hyperparameter tuning with grid search
+
+---
+
+## 📄 License
+MIT License (see [LICENSE](LICENSE))
+
+<div align="center">
+
+**⭐ Star this repo if you found it helpful! ⭐**  
+*Building AI solutions one dataset at a time* 🚀
+
+</div>
+
