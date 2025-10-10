@@ -100,12 +100,24 @@
 
 ## 📊 Data Flow Visualization
 
-**NEW!** Check out the complete data transformation pipeline:
-- 📄 **[Data Flow Diagram](flowcharts/DATA_FLOW.md)** - Visual guide from CSV to neural network
-  - See how data transforms at each phase
-  - Understand data shapes at every step
-  - Learn key transformations (log, encoding, scaling)
-  - Clarify the three datasets (train, validation, test)
+**NEW!** Complete data transformation pipeline documented!
+
+### Quick Overview:
+```
+CSV Files (1460×81) → Preprocessing → Feature Engineering → 
+One-Hot Encoding (264 features) → Scaling → Train/Val Split →
+PyTorch Tensors → Neural Network → Predictions → Submission
+```
+
+**📄 [See Full Data Flow Diagram →](flowcharts/DATA_FLOW.md)**
+
+The complete flowchart includes:
+- ✅ Visual pipeline with all transformations
+- ✅ Data shapes at every step (1460→1458→1166/292→264 features)
+- ✅ Detailed explanations of key transformations
+- ✅ Three datasets explained (train/validation/test)
+- ✅ Feature evolution (79→264)
+- ✅ Common confusions addressed
 
 ---
 
