@@ -79,6 +79,8 @@
   - ✅ Saved best model (epoch 10)
   - ✅ Visualized training progress (3-subplot analysis)
   - ✅ Detected overfitting and performance patterns
+  - ✅ Evaluated best model on validation set (TODO 6.5)
+  - ✅ Created predicted vs actual scatter plot (TODO 6.6)
 
 ---
 
@@ -294,6 +296,8 @@ Output Layer:   64  → 1   (no activation)
 - [x] Plot training curves (3-subplot visualization)
 - [x] Save best model based on validation RMSE (epoch 10)
 - [x] Achieve RMSE: 0.1343, R²: 0.8930, MAE: 0.0889
+- [x] Evaluate best model on validation set (final metrics)
+- [x] Create predicted vs actual scatter plot (visual validation)
 
 **Status: ✅ COMPLETE**
 
@@ -470,6 +474,22 @@ Our neural network achieved excellent results during training:
 - **Next Steps**: Need regularization techniques (early stopping, more dropout, or simpler architecture)
 
 ### 🖼 Visuals
+
+<div align="center">
+
+<img src="images/predicted_vs_actual_price.png" alt="Predicted vs Actual Sale Price" width="680" />
+
+<p><em>Predicted vs Actual Sale Price scatter plot showing excellent model performance</em></p>
+
+</div>
+
+**Key Insights from the Plot:**
+- **Strong Correlation**: Points cluster tightly around the perfect prediction line (red dashed)
+- **Visual Confirmation**: Confirms our excellent RMSE (0.1343) and R² (0.8930) metrics
+- **Model Accuracy**: Most predictions are very close to actual values
+- **Price Range**: Model performs well across the full price spectrum (log scale: 10.4-13.1)
+- **Outliers**: Few points deviate significantly, showing room for improvement
+
 *Additional visualizations will be added as the project progresses*
 
 ---
