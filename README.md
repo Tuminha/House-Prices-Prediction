@@ -98,6 +98,17 @@
 
 ---
 
+## 📊 Data Flow Visualization
+
+**NEW!** Check out the complete data transformation pipeline:
+- 📄 **[Data Flow Diagram](flowcharts/DATA_FLOW.md)** - Visual guide from CSV to neural network
+  - See how data transforms at each phase
+  - Understand data shapes at every step
+  - Learn key transformations (log, encoding, scaling)
+  - Clarify the three datasets (train, validation, test)
+
+---
+
 ## 🚀 Quick Start
 ### Prerequisites
 ```bash
