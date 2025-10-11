@@ -119,7 +119,8 @@
 - [x] Achieve near-target performance (0.1343 vs target <0.13)
 - [x] Generate Kaggle submission: **Position #2291** 🏆
 - [x] Complete end-to-end ML pipeline from data to deployment
-- [ ] Compare neural network vs traditional ML approaches
+- [x] Compare neural network vs traditional ML approaches (Linear Regression, Random Forest)
+- [x] Create comprehensive model comparison visualizations
 
 ---
 
@@ -527,6 +528,35 @@ Our neural network achieved excellent results during training:
 - **Next Steps**: Room for improvement with ensemble methods, feature engineering, and hyperparameter tuning
 
 *This represents a solid foundation in machine learning and neural networks for regression tasks.*
+
+<div align="center">
+
+<img src="images/model_comparison.png" alt="Model Comparison Visualization" width="900" />
+
+<p><em>Comprehensive model comparison: Neural Network vs Linear Regression vs Random Forest</em></p>
+
+</div>
+
+**Model Comparison Insights:**
+- **Neural Network**: Best overall performance (RMSE: 0.1343, R²: 0.8930)
+- **Linear Regression**: Fastest training time, good baseline performance
+- **Random Forest**: Balanced performance with good interpretability
+- **Trade-offs**: Performance vs Speed vs Interpretability
+
+<div align="center">
+
+<img src="images/radar_comparison.png" alt="Model Performance Radar Chart" width="680" />
+
+<p><em>Radar chart showing normalized performance across all metrics</em></p>
+
+</div>
+
+**Radar Chart Analysis:**
+- **Larger area = Better overall performance**
+- **Neural Network**: Largest area (best overall)
+- **Linear Regression**: Strong speed performance
+- **Random Forest**: Balanced across all metrics
+- **Normalized scale**: All metrics on 0-1 scale for fair comparison
 
 ---
 
